@@ -31,6 +31,12 @@ gem 'spring',        group: :development
 gem 'unicorn'
 
 gem 'pg'
+gem 'bootstrap-sass', '~> 3.3.3'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 
 # Use Capistrano for deployment

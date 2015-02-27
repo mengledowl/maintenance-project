@@ -1,0 +1,37 @@
+<h1><%= "#{@student.first_name} #{@student.last_name} (#{@student.preferred_name})" %></h1>
+
+<div class="student-group left" style="background-color: lightgray; padding: 10px; width: 45%; float: left">
+  <span style="font-size: 20px; font-weight: bold">Student Personal Information  </span><%= link_to 'Edit', edit_student_path %><br/>
+  <span style="font-weight: bold">SSN#: </span><%= @student.ssn %><br/>
+  <span style="font-weight: bold">Date of Birth: </span><%= @student.date_of_birth %><br/>
+  <span style="font-weight: bold">Place of Birth: </span><%= @student.place_of_birth %><br/>
+  <span style="font-weight: bold">Arkansas Resident: </span><%= @student.arkansas_resident %><br/>
+  <span style="font-weight: bold">Cell Phone: </span><%= @student.cell_phone %><br/>
+  <span style="font-weight: bold">Work Phone: </span><%= @student.work_phone %><br/>
+  <span style="font-weight: bold">Email: </span><%= @student.email %><br/>
+  <span style="font-weight: bold">Current Employer: </span><%= @student.current_employer %><br/>
+  <span style="font-weight: bold">Length of Employment: </span><%= @student.length_of_employment %><br/>
+  <span style="font-weight: bold">Race: </span><%= @student.race %><br/>
+  <span style="font-weight: bold">Gender: </span><%= @student.gender %><br/>
+  <span style="font-weight: bold">Citizenship: </span><%= @student.citizenship %><br/>
+  <span style="font-weight: bold">Visa Type: </span><%= @student.visa_type %><br/>
+  <span style="font-weight: bold">Country of Citizenship: </span><%= @student.country_of_citizenship %><br/>
+  <span style="font-weight: bold">Requested Admission Year: </span><%= @student.requested_admission_year %><br/>
+  <span style="font-weight: bold">MIS Program Type: </span><%= @student.mis_program_type%><br/>
+  <span style="font-weight: bold">Past Applicant: </span><%= @student.past_applicant %><br/>
+  <span style="font-weight: bold">Past Application Date: </span><%= @student.past_application_date %><br/>
+  <span style="font-weight: bold">Past Enrollment: </span><%= @student.past_enrollment %><br/>
+  <span style="font-weight: bold">Past Enrollment Date: </span><%= @student.past_enrollment_date %><br/>
+  <span style="font-weight: bold">Enrollment Type: </span><%= @student.enrollment_type %><br/>
+  <span style="font-weight: bold">GMAT Date: </span><%= @student.gmat_date %><br/>
+  <span style="font-weight: bold">GMAT Score: </span><%= @student.gmat_score %><br/>
+  <span style="font-weight: bold">TOEFL Date: </span><%= @student.toefl_date %><br/>
+  <span style="font-weight: bold">TOEFL Score: </span><%= @student.toefl_score %><br/>
+  <span style="font-weight: bold">Status: </span><%= @student.status %><br/>
+  <span style="font-weight: bold">Alumni?: </span><%= @student.alumni %><br/>
+  <span style="font-weight: bold">Comments: </span><%= @student.comments%><br/>
+</div>
+
+<div class="student-group right" style="background-color: lightgray; padding: 10px; width: 45%; float: right">
+  <h3>Student Addresses</h3>
+</div>

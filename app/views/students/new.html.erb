@@ -1,0 +1,128 @@
+<h1>Enter in the new student's information</h1>
+
+<%= form_for @student do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name %>
+
+    <%= f.label :preferred_name %>
+    <%= f.text_field :preferred_name %>
+
+    <%= f.label 'Social Security #' %>
+    <%= f.text_field :ssn %>
+
+    <br/><br/>
+
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth, start_year: 1900, end_year: 2015 %>
+
+    <%= f.label :place_of_birth %>
+    <%= f.text_field :place_of_birth %>
+
+    <br/><br/>
+
+    <%= f.label :arkansas_resident? %><br/>
+    <%= f.check_box :arkansas_resident %>
+
+    <br/><br/>
+
+    <%= f.label :cell_phone %>
+    <%= f.text_field :cell_phone %>
+
+    <%= f.label :work_phone %>
+    <%= f.text_field :work_phone %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <br/><br/>
+
+    <%= f.label :current_employer %>
+    <%= f.text_field :current_employer %>
+
+    <%= f.label :length_of_employment %>
+    <%= f.text_field :length_of_employment %>
+
+    <br/><br/>
+
+    <%= f.label :race %>
+    <%= f.text_field :race %>
+
+    <%= f.label :gender %>
+    <%= f.select :gender, options_for_select(gender_options) %>
+
+    <br/><br/>
+
+    <%= f.label :citizenship %>
+    <%= f.text_field :citizenship %>
+
+    <%= f.label :visa_type %>
+    <%= f.text_field :visa_type %>
+
+    <%= f.label :country_of_citizenship %>
+    <%= f.text_field :country_of_citizenship %>
+
+    <br/><br/>
+
+    <%= f.label :requested_admission_year %>
+    <%= f.select :requested_admission_year, options_for_select(year_options Time.now.year, 5.years.from_now.year) %>
+
+    <%= f.label :mis_program_type %>
+    <%= f.text_field :mis_program_type %>
+
+    <br/><br/>
+
+    <%= f.label :past_applicant %><br/>
+    <%= f.check_box :past_applicant %><br/>
+
+    <%= f.label :past_application_date %>
+    <%= f.date_select :past_application_date, end_year: 2015 %>
+
+    <br/><br/>
+
+    <%= f.label :past_enrollment %><br/>
+    <%= f.check_box :past_enrollment %><br/>
+
+    <%= f.label :past_enrollment_date %>
+    <%= f.date_select :past_enrollment_date, end_year: 2015 %>
+
+    <%= f.label :enrollment_type %>
+    <%= f.text_field :enrollment_type %>
+
+    <br/><br/>
+
+    <%= f.label :gmat_date %>
+    <%= f.date_select :gmat_date, end_year: 2015 %>
+
+    <%= f.label :gmat_score %>
+    <%= f.text_field :gmat_score %>
+
+    <%= f.label :toefl_date %>
+    <%= f.date_select :toefl_date %>
+
+    <%= f.label :toefl_score %>
+    <%= f.text_field :toefl_score %>
+
+    <br/><br/>
+
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+
+    <%= f.label :alumni %><br/>
+    <%= f.check_box :alumni %>
+
+    <br/><br/>
+
+    <%= f.label :comments %>
+    <%= f.text_area :comments %>
+
+    <br/><br/>
+
+    <%= f.submit 'Save and continue' %>
+
+<% end %>

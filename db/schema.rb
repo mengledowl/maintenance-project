@@ -11,10 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226152537) do
+ActiveRecord::Schema.define(version: 20150226170335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: true do |t|
+    t.string   "type"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "country"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "advising_appointments", force: true do |t|
+    t.datetime "appointment_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "student_id"
+  end
+
+  create_table "colleges", force: true do |t|
+    t.string   "college_attended"
+    t.string   "dates_attended"
+    t.decimal  "gpa"
+    t.integer  "semester_hours"
+    t.string   "degree_major"
+    t.integer  "current_employment_hours"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "committees", force: true do |t|
+    t.string   "committee_name"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", force: true do |t|
+    t.string   "course_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "course_number"
+  end
+
+  create_table "enrollments", force: true do |t|
+    t.string   "term"
+    t.string   "grade"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "course_number"
+  end
 
   create_table "students", force: true do |t|
     t.string   "first_name"
@@ -51,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150226152537) do
     t.boolean  "alumni"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "committee_id"
   end
 
 end

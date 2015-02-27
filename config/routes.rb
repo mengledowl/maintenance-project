@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
+
+  resources :students
+
+  get 'students/:id/address/new', to: 'students#new_addresses'
+  post 'students/:id/address/create', to: 'students#create_addresses'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
