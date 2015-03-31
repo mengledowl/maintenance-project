@@ -32,6 +32,7 @@ gem 'unicorn'
 
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'nested_form_fields'
 
 group :development do
   gem 'better_errors'
@@ -45,4 +46,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.2.0"
+ruby "2.2.1"

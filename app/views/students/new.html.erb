@@ -123,6 +123,40 @@
 
     <br/><br/>
 
+    <h3>Addresses:</h3>
+
+    <%= f.fields_for :addresses do |address| %>
+        <%= address.label :type %>
+        <%= address.text_field :type, placeholder: 'eg. primary' %>
+
+        <br/>
+
+        <%= address.label :address_line_1 %>
+        <%= address.text_field :address_line_1 %>
+
+        <br/>
+
+        <%= address.label :address_line_2 %>
+        <%= address.text_field :address_line_2 %>
+
+        <br/>
+
+        <%= address.label :city %>
+        <%= address.text_field :city %>
+
+        <br/>
+
+        <%= address.label :state %>
+        <%= address.text_field :state %>
+
+        <br/>
+
+        <%= address.label :country %>
+        <%= address.text_field :country %>
+
+        <br/><br/>
+    <% end %>
+
     <%= f.submit 'Save and continue' %>
 
 <% end %>

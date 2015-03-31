@@ -1,0 +1,17 @@
+<nav>
+  <%= link_to root_path do %>
+      <span class="navigation">Home</span>
+  <% end %>
+  <%= link_to students_path do %>
+      <span class="navigation">View All Students</span>
+  <% end %>
+  <%= link_to new_student_path do %>
+    <span class="navigation">Create New Student</span>
+  <% end %>
+  <%= link_to courses_path do %>
+    <span class="navigation">Courses List</span>
+  <% end %>
+  <%= link_to new_course_path do %>
+    <span class="navigation">Add New Course</span>
+  <% end %>
+</nav>

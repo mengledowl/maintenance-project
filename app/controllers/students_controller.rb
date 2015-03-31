@@ -1,11 +1,18 @@
 class StudentsController < ApplicationController
 
+  before_action :set_student, except: [:index, :new, :create]
+
+  def index
+    @students = Student.all
+  end
+
   def show
-    @student = Student.find(params[:id])
+    @student.enrollments.order(:term)
   end
 
   def new
     @student = Student.new
+    3.times { @student.addresses.build }
   end
 
   def create
@@ -14,17 +21,33 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find(params[:id])
+
   end
 
   def update
-    @student = Student.find(params[:id])
-
     @student.update(student_params)
     render :show
   end
 
+  def schedule
+
+  end
+
+  def edit_schedule
+    @courses = Course.all
+  end
+
+  def update_schedule
+    @student.update(schedule_params)
+
+    redirect_to student_path(@student)
+  end
+
   private
+
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
   def student_params
     params.require(:student).permit(:first_name, :last_name, :middle_name, :preferred_name, :ssn, :date_of_birth,
@@ -32,5 +55,9 @@ class StudentsController < ApplicationController
     :gender, :citizenship, :visa_type, :country_of_citizenship, :requested_admission_year, :mis_program_type, :past_applicant,
     :past_application_date, :past_enrollment, :past_enrollment_date, :enrollment_type, :gmat_date, :gmat_score, :toefl_date,
     :toefl_score, :comments, :status, :alumni, :committee_id)
+  end
+
+  def schedule_params
+    params.require(:student).permit(enrollments_attributes: [:id, :term, :grade, :course_id])
   end
 end

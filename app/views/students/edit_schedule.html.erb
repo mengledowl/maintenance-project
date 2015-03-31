@@ -1,0 +1,22 @@
+<h1>Edit <%= @student.full_name.pluralize %> Schedule</h1>
+
+<%= form_for @student, url: { action: :update_schedule } do |f| %>
+
+    <%= f.nested_fields_for :enrollments do |enrollment| %>
+        <%= enrollment.remove_nested_fields_link %>
+        <%= enrollment.label :term %>
+        <%= enrollment.text_field :term %>
+
+        <%= enrollment.label :grade %>
+        <%= enrollment.text_field :grade %>
+
+        <%= enrollment.select :course_id, @courses.collect { |c| ["#{c.course_number} - #{c.course_name}", c.id]} %>
+
+    <% end %>
+
+    <%= f.add_nested_fields_link :enrollments %>
+
+    <br/><br/>
+
+    <%= f.submit %>
+<% end %>

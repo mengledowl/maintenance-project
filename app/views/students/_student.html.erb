@@ -1,0 +1,9 @@
+<%= link_to student_path(student), class: 'listing' do %>
+    <li class="listing">
+      <span><%= student.full_name %></span>
+      <span>Email: <%= student.email %></span>
+      <span>Gender: <%= student.gender %></span>
+      <span>Status: <%= student.status %></span>
+      <span><%= student.mis_program_type %></span>
+    </li>
+<% end %>
