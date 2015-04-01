@@ -33,6 +33,7 @@ gem 'unicorn'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'nested_form_fields'
+gem 'rails_12factor'
 
 group :development do
   gem 'better_errors'
