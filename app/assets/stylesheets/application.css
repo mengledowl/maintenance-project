@@ -73,3 +73,19 @@ nav a {
 a li span {
   display: block;
 }
+
+.field_with_errors {
+  display: inline-block;
+}
+
+.field_with_errors input {
+  background-color: #e63434;
+  border-color: #e63434;
+  color: white;
+}
+
+.field_with_errors select {
+  background-color: #e63434;
+  border-color: #e63434;
+  color: white;
+}

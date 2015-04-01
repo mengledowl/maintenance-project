@@ -17,7 +17,11 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.create(student_params)
-    redirect_to @student
+    if @student.persisted?
+      redirect_to @student, notice: 'Successfully created.'
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -25,8 +29,11 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student.update(student_params)
-    render :show
+    if @student.update(student_params)
+      render :show
+    else
+      render :edit
+    end
   end
 
   def schedule
@@ -54,7 +61,8 @@ class StudentsController < ApplicationController
     :place_of_birth, :arkansas_resident, :cell_phone, :work_phone, :email, :current_employer, :length_of_employment, :race,
     :gender, :citizenship, :visa_type, :country_of_citizenship, :requested_admission_year, :mis_program_type, :past_applicant,
     :past_application_date, :past_enrollment, :past_enrollment_date, :enrollment_type, :gmat_date, :gmat_score, :toefl_date,
-    :toefl_score, :comments, :status, :alumni, :committee_id)
+    :toefl_score, :comments, :status, :alumni, :committee_id,
+    addresses_attributes: [:type, :id, :address_line_1, :address_line_2, :city, :state, :country])
   end
 
   def schedule_params

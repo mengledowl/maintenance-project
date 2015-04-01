@@ -13,6 +13,9 @@ class Student < ActiveRecord::Base
   accepts_nested_attributes_for :enrollments, allow_destroy: true
   accepts_nested_attributes_for :courses
 
+  validates_presence_of :first_name, :last_name, :ssn, :date_of_birth, :place_of_birth, :cell_phone, :email,
+                        :requested_admission_year, :mis_program_type
+
   def full_name
     "#{first_name} #{last_name}"
   end

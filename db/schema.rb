@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329043842) do
+ActiveRecord::Schema.define(version: 20150331235917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
-    t.string   "type"
+    t.string   "kind"
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "city"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20150329043842) do
     t.string   "length_of_employment"
     t.string   "race"
     t.string   "gender"
-    t.string   "citizenship"
     t.string   "visa_type"
     t.string   "country_of_citizenship"
     t.string   "requested_admission_year"
@@ -108,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150329043842) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "committee_id"
+    t.boolean  "citizenship"
   end
 
 end

@@ -1,10 +1,12 @@
 <h1>Enter in the new student's information</h1>
 
 <%= form_for @student do |f| %>
-    <%= f.label :first_name %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label "First name *" %>
     <%= f.text_field :first_name %>
 
-    <%= f.label :last_name %>
+    <%= f.label 'Last name *' %>
     <%= f.text_field :last_name %>
 
     <%= f.label :middle_name %>
@@ -13,31 +15,37 @@
     <%= f.label :preferred_name %>
     <%= f.text_field :preferred_name %>
 
-    <%= f.label 'Social Security #' %>
+    <%= f.label 'Social Security # *' %>
     <%= f.text_field :ssn %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
-    <%= f.label :date_of_birth %>
-    <%= f.date_select :date_of_birth, start_year: 1900, end_year: 2015 %>
+    <%= f.label 'Date of birth *' %>
+    <%= f.date_select :date_of_birth, start_year: 1900, end_year: 2015, include_blank: true %>
 
-    <%= f.label :place_of_birth %>
+    <%= f.label 'Place of birth *' %>
     <%= f.text_field :place_of_birth %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :arkansas_resident? %><br/>
     <%= f.check_box :arkansas_resident %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
-    <%= f.label :cell_phone %>
+    <%= f.label 'Cell phone *' %>
     <%= f.text_field :cell_phone %>
 
     <%= f.label :work_phone %>
     <%= f.text_field :work_phone %>
 
-    <%= f.label :email %>
+    <%= f.label 'Email *' %>
     <%= f.text_field :email %>
 
     <br/><br/>
@@ -48,18 +56,22 @@
     <%= f.label :length_of_employment %>
     <%= f.text_field :length_of_employment %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :race %>
     <%= f.text_field :race %>
 
     <%= f.label :gender %>
-    <%= f.select :gender, options_for_select(gender_options) %>
+    <%= f.select :gender, options_for_select(gender_options), include_blank: true %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
-    <%= f.label :citizenship %>
-    <%= f.text_field :citizenship %>
+    <%= f.label 'US Citizenship' %><br/>
+    <%= f.check_box :citizenship, checked: true %><br/>
 
     <%= f.label :visa_type %>
     <%= f.text_field :visa_type %>
@@ -67,51 +79,65 @@
     <%= f.label :country_of_citizenship %>
     <%= f.text_field :country_of_citizenship %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
-    <%= f.label :requested_admission_year %>
-    <%= f.select :requested_admission_year, options_for_select(year_options Time.now.year, 5.years.from_now.year) %>
+    <%= f.label 'Requested admission year *' %>
+    <%= f.select :requested_admission_year, options_for_select(year_options Time.now.year, 5.years.from_now.year), include_blank: true %>
 
-    <%= f.label :mis_program_type %>
+    <%= f.label 'MIS program type *' %>
     <%= f.text_field :mis_program_type %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :past_applicant %><br/>
     <%= f.check_box :past_applicant %><br/>
 
     <%= f.label :past_application_date %>
-    <%= f.date_select :past_application_date, end_year: 2015 %>
+    <%= f.date_select :past_application_date, end_year: 2015, include_blank: true %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :past_enrollment %><br/>
     <%= f.check_box :past_enrollment %><br/>
 
     <%= f.label :past_enrollment_date %>
-    <%= f.date_select :past_enrollment_date, end_year: 2015 %>
+    <%= f.date_select :past_enrollment_date, end_year: 2015, include_blank: true %>
 
     <%= f.label :enrollment_type %>
     <%= f.text_field :enrollment_type %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :gmat_date %>
-    <%= f.date_select :gmat_date, end_year: 2015 %>
+    <%= f.date_select :gmat_date, end_year: 2015, include_blank: true %>
 
     <%= f.label :gmat_score %>
     <%= f.text_field :gmat_score %>
 
     <%= f.label :toefl_date %>
-    <%= f.date_select :toefl_date %>
+    <%= f.date_select :toefl_date, end_year: 2015, include_blank: true %>
 
     <%= f.label :toefl_score %>
     <%= f.text_field :toefl_score %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :status %>
-    <%= f.text_field :status %>
+    <%= f.select :status, options_for_select(application_statuses) %>
+
+    <br/>
+    <hr/>
+    <br/>
 
     <%= f.label :alumni %><br/>
     <%= f.check_box :alumni %>
@@ -121,13 +147,15 @@
     <%= f.label :comments %>
     <%= f.text_area :comments %>
 
-    <br/><br/>
+    <br/>
+    <hr/>
+    <br/>
 
     <h3>Addresses:</h3>
 
     <%= f.fields_for :addresses do |address| %>
         <%= address.label :type %>
-        <%= address.text_field :type, placeholder: 'eg. primary' %>
+        <%= address.select :kind, options_for_select(address_types) %>
 
         <br/>
 
