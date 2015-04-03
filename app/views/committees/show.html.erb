@@ -1,0 +1,5 @@
+<ul>
+  <% @committee.students.where(status: 'pending').each do |student| %>
+      <%= render student %>
+  <% end %>
+</ul>

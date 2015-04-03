@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   patch '/students/:id/schedule/edit', to: 'students#update_schedule', as: 'update_student_schedule'
 
   resources :courses
+
+  resources :committees
 end

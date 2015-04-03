@@ -89,3 +89,23 @@ a li span {
   border-color: #e63434;
   color: white;
 }
+
+.alert {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.alert-notice {
+  border: 1px solid green;
+  background-color: lightgreen;
+}
+
+.alert-error {
+  border: 1px solid red;
+  background-color: #FA8072;
+}
+
+.alert-alert {
+  border: 1px solid yellow;
+  background-color: lightyellow;
+}

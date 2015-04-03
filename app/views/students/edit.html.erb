@@ -187,6 +187,48 @@
         <br/><br/>
     <% end %>
 
+    <br/>
+
+    <h3>Colleges</h3>
+
+    <%= f.nested_fields_for :colleges do |college| %>
+        <%= college.label :college_attended %>
+        <%= college.text_field :college_attended %>
+
+        <br/>
+
+        <%= college.label :dates_attended %>
+        <%= college.text_field :dates_attended %>
+
+        <br/>
+
+        <%= college.label :gpa %>
+        <%= college.text_field :gpa %>
+
+        <br/>
+
+        <%= college.label :semester_hours %>
+        <%= college.text_field :semester_hours, placeholder: 'Integers only' %>
+
+        <br/>
+
+        <%= college.label :degree_major %>
+        <%= college.text_field :degree_major %>
+
+        <br/>
+
+        <%= college.label :current_employment_hours %>
+        <%= college.text_field :current_employment_hours, placeholder: 'Integers only' %>
+
+        <br/>
+
+        <%= college.remove_nested_fields_link 'Remove' %>
+    <% end %>
+
+    <%= f.add_nested_fields_link :colleges, 'Add College' %>
+
+    <br/><br/>
+
     <%= f.submit 'Save and continue' %>
 
 <% end %>

@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
 
+  before_action :committee_check
   before_action :set_student, except: [:index, :new, :create]
 
   def index
@@ -30,6 +31,7 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
+      flash.now[:notice] = 'Updated successfully'
       render :show
     else
       render :edit
@@ -52,6 +54,12 @@ class StudentsController < ApplicationController
 
   private
 
+  def committee_check
+    unless Committee.count > 0
+      redirect_to new_committee_path, alert: 'Please create at least 1 committee first!'
+    end
+  end
+
   def set_student
     @student = Student.find(params[:id])
   end
@@ -62,7 +70,8 @@ class StudentsController < ApplicationController
     :gender, :citizenship, :visa_type, :country_of_citizenship, :requested_admission_year, :mis_program_type, :past_applicant,
     :past_application_date, :past_enrollment, :past_enrollment_date, :enrollment_type, :gmat_date, :gmat_score, :toefl_date,
     :toefl_score, :comments, :status, :alumni, :committee_id,
-    addresses_attributes: [:type, :id, :address_line_1, :address_line_2, :city, :state, :country])
+    addresses_attributes: [:kind, :id, :address_line_1, :address_line_2, :city, :state, :country],
+    colleges_attributes: [:id, :college_attended, :dates_attended, :gpa, :semester_hours, :degree_major, :current_employment_hours])
   end
 
   def schedule_params
