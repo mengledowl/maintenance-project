@@ -38,18 +38,30 @@ class StudentsController < ApplicationController
     end
   end
 
-  def schedule
-
-  end
-
   def edit_schedule
     @courses = Course.all
   end
 
   def update_schedule
-    @student.update(schedule_params)
+    if @student.update(schedule_params)
+      redirect_to student_path(@student), notice: 'Successfully updated'
+    else
+      flash.now[:error] = "Oh noes, something broke! D':"
+      render :edit_schedule
+    end
+  end
 
-    redirect_to student_path(@student)
+  def edit_appointments
+
+  end
+
+  def update_appointments
+    if @student.update(appointment_params)
+      redirect_to student_path(@student), notice: 'Successfully updated'
+    else
+      flash.now[:error] = "Oh noes, something broke! D':"
+      render :edit_appointments
+    end
   end
 
   private
@@ -75,6 +87,10 @@ class StudentsController < ApplicationController
   end
 
   def schedule_params
-    params.require(:student).permit(enrollments_attributes: [:id, :term, :grade, :course_id])
+    params.require(:student).permit(enrollments_attributes: [:id, :term, :grade, :course_id, :_destroy])
+  end
+
+  def appointment_params
+    params.require(:student).permit(advising_appointments_attributes: [:id, :appointment_time, :_destroy])
   end
 end

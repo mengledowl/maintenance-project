@@ -1,5 +1,9 @@
-<ul>
-  <% @committee.students.where(status: 'pending').each do |student| %>
-      <%= render student %>
-  <% end %>
-</ul>
+<% if @committee.students.where(status: 'pending').size > 0 %>
+    <ul>
+      <% @committee.students.where(status: 'pending').each do |student| %>
+          <%= render student %>
+      <% end %>
+    </ul>
+<% else %>
+    <p>No pending applications for this committee</p>
+<% end %>

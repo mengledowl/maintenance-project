@@ -1,5 +1,9 @@
 <h1><%= "#{@student.first_name} #{@student.last_name} (#{@student.preferred_name})" %></h1>
 
+<span><%= link_to 'Advising Appointments', edit_student_appointments_path(@student) %></span>
+
+<br/><br/>
+
 <div class="student-group left" style="background-color: lightgray; padding: 10px; width: 45%; float: left">
   <span style="font-size: 20px; font-weight: bold">Student Personal Information  </span><%= link_to 'Edit', edit_student_path %><br/>
   <span style="font-weight: bold">SSN#: </span><%= @student.ssn %><br/>

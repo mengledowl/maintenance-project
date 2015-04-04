@@ -1,0 +1,11 @@
+<h1>All Upcoming Appointments</h1>
+
+<p>Note: Only appointments today forward shown on this screen</p>
+
+<% if @advising_appointments.size > 0 %>
+    <ul>
+      <%= render @advising_appointments %>
+    </ul>
+<% else %>
+    <p>No future appointments found</p>
+<% end %>

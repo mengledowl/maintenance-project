@@ -1,0 +1,17 @@
+<h2>Edit <%= @student.full_name.pluralize %> Appointments</h2>
+
+<%= form_for @student, url: { action: :update_appointments } do |f| %>
+
+    <%= f.nested_fields_for :advising_appointments do |appointment| %>
+        <%= appointment.remove_nested_fields_link %>
+
+        <%= appointment.label :appointment_time %>
+        <%= appointment.datetime_select :appointment_time, minute_step: 15, start_year: Time.now.year, include_blank: true%>
+    <% end %>
+
+    <%= f.add_nested_fields_link :advising_appointments, 'New Appointment' %>
+
+    <br/><br/>
+
+    <%= f.submit %>
+<% end %>

@@ -12,9 +12,10 @@ class Student < ActiveRecord::Base
   has_many :courses, through: :enrollments
 
   accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :enrollments, allow_destroy: true
+  accepts_nested_attributes_for :enrollments, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :courses
   accepts_nested_attributes_for :colleges, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :advising_appointments, allow_destroy: true, reject_if: :any_blank
 
   validates_presence_of :first_name, :last_name, :ssn, :date_of_birth, :place_of_birth, :cell_phone, :email,
                         :requested_admission_year, :mis_program_type
@@ -32,6 +33,14 @@ class Student < ActiveRecord::Base
   end
 
   private
+
+  def any_blank(attributed)
+    attributed.each do |item|
+      return true if item[1].blank?
+    end
+
+    false
+  end
 
   def add_to_committee
     self.committee = next_committee_assignment

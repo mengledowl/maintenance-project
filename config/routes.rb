@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   resources :courses
 
   resources :committees
+
+  resources :advising_appointments
+
+  get '/students/:id/appointments/edit', to: 'students#edit_appointments', as: 'edit_student_appointments'
+  patch 'students/:id/appointments/edit', to: 'students#update_appointments'
 end

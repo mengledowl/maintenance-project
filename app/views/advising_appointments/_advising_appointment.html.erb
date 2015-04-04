@@ -1,0 +1,13 @@
+<%= link_to student_path(advising_appointment.student), class: 'listing' do %>
+    <li class="listing">
+      <span>Student Name: <%= advising_appointment.student.full_name %></span>
+      <span><b><%= (distance_of_time_in_words_to_now advising_appointment.appointment_time).capitalize %>
+        <% if Time.now < advising_appointment.appointment_time %>
+            until appointment
+        <% else %>
+            since appointment
+        <% end %>
+      </b></span>
+      <span>Appointment Date/Time: <%= advising_appointment.appointment_time %></span>
+    </li>
+<% end %>
