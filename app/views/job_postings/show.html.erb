@@ -1,0 +1,20 @@
+<%= link_to 'back', :back %>
+
+<h1><%= @job_posting.title %> <span style="font-size: 12px;"><%= link_to 'edit', edit_job_posting_path(@job_posting), style: 'text-decoration: none' %></span></h1>
+
+<hr><br/>
+
+<span style="font-weight: bold">Required GPA: </span><%= @job_posting.required_gpa %><br/><br/>
+
+<span style="font-weight: bold;">Description</span><br/><br/>
+<p><%= @job_posting.description %></p>
+
+<br/>
+
+<span style="font-weight: bold">Required Courses</span><br/><br/>
+
+<ul>
+  <% @job_posting.courses.each do |course| %>
+    <li><%= course.course_number %> - <%= course.course_name %></li>
+  <% end %>
+</ul>

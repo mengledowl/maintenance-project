@@ -64,6 +64,23 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit_profile
+
+  end
+
+  def update_profile
+    if @student.update(profile_params)
+      redirect_to @student, notice: 'Successfully updated'
+    else
+      flash.now[:error] = "Oh noes, something broke! D':"
+      render :edit_profile
+    end
+  end
+
+  def view_eligible_jobs
+    flash.now[:alert] = "This page lists the jobs you are eligible based on your GPA (#{@student.gpa}) and the courses you have taken with a passing grade."
+  end
+
   private
 
   def committee_check
@@ -81,7 +98,7 @@ class StudentsController < ApplicationController
     :place_of_birth, :arkansas_resident, :cell_phone, :work_phone, :email, :current_employer, :length_of_employment, :race,
     :gender, :citizenship, :visa_type, :country_of_citizenship, :requested_admission_year, :mis_program_type, :past_applicant,
     :past_application_date, :past_enrollment, :past_enrollment_date, :enrollment_type, :gmat_date, :gmat_score, :toefl_date,
-    :toefl_score, :comments, :status, :alumni, :committee_id,
+    :toefl_score, :comments, :status, :alumni, :committee_id, :graduated,
     addresses_attributes: [:kind, :id, :address_line_1, :address_line_2, :city, :state, :country],
     colleges_attributes: [:id, :college_attended, :dates_attended, :gpa, :semester_hours, :degree_major, :current_employment_hours])
   end
@@ -92,5 +109,9 @@ class StudentsController < ApplicationController
 
   def appointment_params
     params.require(:student).permit(advising_appointments_attributes: [:id, :appointment_time, :_destroy])
+  end
+
+  def profile_params
+    params.require(:student).permit(:gpa)
   end
 end

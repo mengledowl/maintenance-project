@@ -1,0 +1,38 @@
+<h1>Edit Job Listing</h1>
+
+<%= link_to 'back', :back %>
+
+<%= form_for @job_posting, url: { action: :update } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <br/><br/>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <br/><br/>
+
+    <%= f.label :description %>
+    <br/><br/>
+    <%= f.text_area :description, cols: 60, rows: 20 %>
+
+    <br/><br/>
+
+    <%= f.label :required_gpa %>
+    <%= f.text_field :required_gpa, size: 5 %>
+
+    <br/><br/>
+
+    <%= f.nested_fields_for :job_postings_courses do |required_courses| %>
+        <%= required_courses.remove_nested_fields_link %>
+
+        <%= required_courses.select :course_id, @courses.collect { |c| ["#{c.course_number} - #{c.course_name}", c.id]} %>
+
+    <% end %>
+
+    <%= f.add_nested_fields_link :job_postings_courses, 'Add Course' %>
+
+    <br/><br/>
+
+    <%= f.submit %>
+<% end %>

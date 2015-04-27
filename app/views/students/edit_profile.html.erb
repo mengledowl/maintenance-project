@@ -1,0 +1,31 @@
+<h1>Edit Profile</h1>
+
+<%= link_to 'back', :back %>
+
+<div class="student-group right" style="background-color: lightgray; padding: 10px; width: 45%; float: right">
+  <span style="font-size: 20px; font-weight: bold">Courses You've Taken</span><br/>
+
+  <% @student.enrollments.each do |enrollment| %>
+      <% if enrollment.grade %>
+          <br/>
+          <div>
+            <%= "Term: #{enrollment.term}" %><br/>
+            <%= "Course: #{enrollment.course.course_number} - #{enrollment.course.course_name}" %>
+          </div>
+      <% end %>
+  <% end %>
+</div>
+
+<%= form_for @student, url: { action: :update_profile } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <br/>
+
+    GPA
+    <%= f.text_field :gpa, size: 5 %>
+
+    <br/><br/>
+
+    <%= f.submit 'Update profile' %>
+
+<% end %>

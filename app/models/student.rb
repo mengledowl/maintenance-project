@@ -32,6 +32,22 @@ class Student < ActiveRecord::Base
     self.class.where("id < ?", id).last
   end
 
+  def jobs_eligible_for
+    job_postings = JobPosting.where('required_gpa <= ?', self.gpa)
+
+    student_courses = self.completed_courses
+
+    job_postings.each do |job|
+      job_postings = job_postings - [job] unless (job.courses - student_courses).empty?
+    end
+
+    job_postings
+  end
+
+  def completed_courses
+    courses.where('grade in (?)', %w(A a B b C c D d))
+  end
+
   private
 
   def any_blank(attributed)

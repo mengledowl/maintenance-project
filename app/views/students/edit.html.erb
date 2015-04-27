@@ -5,7 +5,7 @@
 <%= form_for @student do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label "First name *" %>
+    <%= f.label 'First name *' %>
     <%= f.text_field :first_name %>
 
     <%= f.label 'Last name *' %>
@@ -138,6 +138,9 @@
 
     <%= f.label :status %>
     <%= f.select :status, options_for_select(application_statuses) %>
+
+    <%= f.label :graduated? %>
+    <%= f.check_box :graduated %>
 
     <br/>
     <hr/>

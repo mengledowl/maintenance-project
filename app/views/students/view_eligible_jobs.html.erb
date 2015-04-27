@@ -1,0 +1,9 @@
+<ul>
+  <% @student.jobs_eligible_for.each do |job| %>
+      <%= link_to job_posting_path(job), class: 'listing' do %>
+          <li class="listing">
+            <span><%= job.title %></span>
+          </li>
+      <% end %>
+  <% end %>
+</ul>
